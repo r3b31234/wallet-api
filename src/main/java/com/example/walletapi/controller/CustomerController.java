@@ -41,12 +41,6 @@ public class CustomerController {
 		
 		CustomerResponseDTO response = customerMapper.toDTO(customer);
 		
-		/*CustomerResponseDTO response = new CustomerResponseDTO();
-		response.setId(customer.getId());
-		response.setName(customer.getName());
-		response.setEmail(customer.getEmail());
-		response.setActive(customer.isActive());*/
-		
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 		
 	}
@@ -57,12 +51,6 @@ public class CustomerController {
 	    Customer customer = customerService.getCustomerById(id);
 
 	    CustomerResponseDTO response = customerMapper.toDTO(customer);
-	    
-	   /* CustomerResponseDTO response = new CustomerResponseDTO();
-	    response.setId(customer.getId());
-	    response.setName(customer.getName());
-	    response.setEmail(customer.getEmail());
-	    response.setActive(customer.isActive());*/
 
 	    return ResponseEntity.ok(response);
 	}
@@ -94,12 +82,6 @@ public class CustomerController {
 		Customer customer = customerService.getCustomerByEmail(email);
 		
 		CustomerResponseDTO response = customerMapper.toDTO(customer);
-		
-		/*CustomerResponseDTO response = new CustomerResponseDTO();
-		response.setId(customer.getId());
-		response.setName(customer.getName());
-		response.setEmail(customer.getEmail());
-		response.setActive(customer.isActive());*/
 
 		return ResponseEntity.ok(response);
 	}
