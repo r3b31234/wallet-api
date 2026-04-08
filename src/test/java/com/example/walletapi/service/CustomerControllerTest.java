@@ -1,5 +1,6 @@
 package com.example.walletapi.service;
 
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -42,17 +43,21 @@ class CustomerControllerTest {
         Customer customer = new Customer();
         customer.setId(1L);
         customer.setName("Luis");
+        customer.setLastName("Espina Hernandez");
         customer.setEmail("luis@test.com");
+        customer.setPhoneNumber((long) 5566);
         customer.setActive(true);
 
-        when(customerService.createCustomer(anyString(), anyString())).thenReturn(customer);
+        when(customerService.createCustomer(anyString(), anyString(), anyString(), anyLong())).thenReturn(customer);
 
         when(customerMapper.toDTO(customer)).thenAnswer(invocation -> {
             com.example.walletapi.dto.CustomerResponseDTO dto =
                     new com.example.walletapi.dto.CustomerResponseDTO();
             dto.setId(1L);
             dto.setName("Luis");
+            dto.setLastName("Espina Hernandez");
             dto.setEmail("luis@test.com");
+            dto.setPhoneNumber((long) 5566);
             dto.setActive(true);
             return dto;
         });
@@ -62,13 +67,17 @@ class CustomerControllerTest {
                 .content("""
                         {
                           "name": "Luis",
-                          "email": "luis@test.com"
+                          "lastName": "Espina",
+                          "email": "luis@test.com",
+                          "phoneNumber": 556677
                         }
                         """))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Luis"))
+                .andExpect(jsonPath("$.lastName").value("Espina Hernandez"))
                 .andExpect(jsonPath("$.email").value("luis@test.com"))
+                .andExpect(jsonPath("$.phoneNumber").value(5566))
                 .andExpect(jsonPath("$.active").value(true));
     }
 }

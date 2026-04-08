@@ -6,7 +6,7 @@ import com.example.walletapi.domain.Customer;
 
 public interface CustomerService {
 
-	Customer createCustomer(String name, String email);
+	Customer createCustomer(String name, String lastName, String email, Long phoneNumber);
 	
 	Customer getCustomerById(Long id);
 	

@@ -37,7 +37,7 @@ public class CustomerController {
 	@PostMapping
 	public ResponseEntity<CustomerResponseDTO> create(@Valid @RequestBody CustomerRequestDTO request){
 		
-		Customer customer = customerService.createCustomer(request.getName(), request.getEmail());
+		Customer customer = customerService.createCustomer(request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber());
 		
 		CustomerResponseDTO response = customerMapper.toDTO(customer);
 		

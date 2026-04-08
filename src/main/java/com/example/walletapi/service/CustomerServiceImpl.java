@@ -24,11 +24,13 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
 	@Override
-	public Customer createCustomer(String name, String email) {
+	public Customer createCustomer(String name, String lastName, String email, Long phoneNumber) {
 
         CustomerEntity entity = new CustomerEntity();
         entity.setName(name);
+        entity.setLastName(lastName);
         entity.setEmail(email);
+        entity.setPhoneNumber(phoneNumber);
         entity.setActive(true);
 
         CustomerEntity saved = customerRepository.save(entity);
@@ -36,7 +38,9 @@ public class CustomerServiceImpl implements CustomerService{
         Customer customer = new Customer();
         customer.setId(saved.getId());
         customer.setName(saved.getName());
+        customer.setLastName(saved.getLastName());
         customer.setEmail(saved.getEmail());
+        customer.setPhoneNumber(saved.getPhoneNumber());
         customer.setActive(saved.isActive());
 
         return customer;

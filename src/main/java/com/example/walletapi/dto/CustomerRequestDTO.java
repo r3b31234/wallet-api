@@ -10,10 +10,16 @@ public class CustomerRequestDTO {
 	@Size(max = 120, message = "Nombre máximo de 120 caracteres")
 	private String name;
 	
+	@NotBlank(message = "Apellido requerido")
+	@Size(max = 120, message = "Apellido máximo de 120 caracteres")
+	private String lastName;
+	
 	@NotBlank(message = "Email requerido")
     @Email(message = "Email inválido")
     @Size(max = 200, message = "Email máximo 200 caracteres")
     private String email;
+	
+	private Long phoneNumber;
     
 	public String getName() {
 		return name;
@@ -27,4 +33,17 @@ public class CustomerRequestDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 }

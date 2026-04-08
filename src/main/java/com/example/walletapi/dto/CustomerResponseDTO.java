@@ -4,7 +4,9 @@ public class CustomerResponseDTO {
 
 	private Long id;
     private String name;
+    private String lastName;
     private String email;
+    private Long phoneNumber;
     private boolean active;
     
 	public Long getId() {
@@ -30,6 +32,18 @@ public class CustomerResponseDTO {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
     
 }

@@ -44,7 +44,7 @@ public class CustomerServiceImplTest {
 
 		when(customerRepository.save(any(CustomerEntity.class))).thenReturn(savedEntity);
 
-		Customer result = customerService.createCustomer("Luis", "luis@test.com");
+		Customer result = customerService.createCustomer("Luis", "Espina","luis@test.com", (long) 5566);
 
 		assertNotNull(result);
 		assertEquals(1L, result.getId());
